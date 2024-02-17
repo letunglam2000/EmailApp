@@ -17,33 +17,29 @@ public class Email {
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("EMAIL CREATED: " + this.firstName + " " + this.lastName);
 
         // Call a method asking for the department - return the department
         this.department = setDepartment();
-        System.out.println("Department: " + this.department);
 
         // Call a method that returns a random password
         this.password = randomPassword(8);
-        System.out.println("Your password is: " + this.password);
+        System.out.println("\nYour password is: " + password);
 
         // Combine elements to generate email
         email = firstName.toLowerCase() + "."+ lastName.toLowerCase() + "@" + department + "." + companySuffix;
-        System.out.println("Your email is: " + email);
-
-
 
     }
 
     // Ask for the department
     private String setDepartment() {
-        System.out.print("""
+        System.out.println("""
                 DEPARTMENT CODES
                 1 for Sales
                 2 for Development
                 3 for Accounting
-                0 for none
-                Enter the department code:""");
+                0 for none""");
+
+        System.out.print("Enter the department code: ");
         Scanner in = new Scanner(System.in);
         int deptChoice = in.nextInt();
         if (deptChoice == 1) { return "sales"; }
@@ -76,5 +72,16 @@ public class Email {
     // Change the password
     public void changePassword (String password) {
         this.password = password;
+    }
+
+    public int getMailboxCapacity() { return mailboxCapacity; }
+    public String getAlternateEmail() { return alternateEmail; }
+    public String getPassword() { return password; }
+
+    public void showInfo() {
+        System.out.println(
+                "\nDISPLAY NAME: " + firstName + " " + lastName +
+                "\nCOMPANY EMAIL: " + email +
+                "\nMAILBOX CAPACITY: " + mailboxCapacity + "mb");
     }
 }
